@@ -1,10 +1,13 @@
 import app from "./app.js";
+import Razorpay from "razorpay";
+
+import "./config/database.js";
 
 const port = process.env.PORT;
 
-// testing route
-app.get("/", (req, res)=> {
-    res.send("Working fine...");
+export const instance = new Razorpay({
+    key_id: process.env.RAZORPAY_API_KEY,
+    key_secret: process.env.RAZORPAY_API_SECRET
 });
 
 app.listen(port, ()=> {
